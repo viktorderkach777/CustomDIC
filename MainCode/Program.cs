@@ -13,15 +13,15 @@ namespace MainCode
         {
             DIC dc = new DIC();
 
-            dc.Register<ISomeInterface, UsefulClass >(); //A1, R1:A1
-            dc.Register<MyAbstractClass, SomeClassRealization>();//A2, R2:A2
+            dc.Register<ISomeInterface, SomeClassRealization>(); //A1, R1:A1
+            dc.Register<MyAbstractClass,  UsefulClass> ();//A2, R2:A2
 
-            //Console.WriteLine(dc.Resolve<ISomeInterface>().IsDoingNothingMethod());
-            //Console.WriteLine(dc.Resolve<MyAbstractClass>().UselessMethod());
+            Console.WriteLine(dc.Resolve<ISomeInterface>().IsDoingNothingMethod());
+            Console.WriteLine(dc.Resolve<MyAbstractClass>().UselessMethod());
 
 
-            Console.WriteLine(dc.Resolve<ISomeInterface>().IsDoingNothingMethod());//A1, R2:A2
-            Console.WriteLine(dc.Resolve<MyAbstractClass>().UselessMethod());//R1:A1, A2
+            //Console.WriteLine(dc.Resolve<ISomeInterface>().IsDoingNothingMethod());//A1, R2:A2
+            //Console.WriteLine(dc.Resolve<MyAbstractClass>().UselessMethod());//R1:A1, A2
         }
     }
 
