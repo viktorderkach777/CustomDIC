@@ -11,6 +11,11 @@ namespace Container
         public override string Message => "Parameter is either Interface or Abstract class";
     }
 
+    public class RequestNotRegisteredTypeException : Exception
+    {
+        public override string Message => "This type doesn't exist";
+    }
+
 
     public class DIC
     {

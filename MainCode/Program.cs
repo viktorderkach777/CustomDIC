@@ -19,7 +19,8 @@ namespace MainCode
             Console.WriteLine(dc.Resolve<ISomeInterface>().IsDoingNothingMethod());
             Console.WriteLine(dc.Resolve<MyAbstractClass>().UselessMethod());
 
-
+            var t = dc.Resolve<ISomeInterface>();
+            Console.WriteLine(t.IsDoingNothingMethod());
             //Console.WriteLine(dc.Resolve<ISomeInterface>().IsDoingNothingMethod());//A1, R2:A2
             //Console.WriteLine(dc.Resolve<MyAbstractClass>().UselessMethod());//R1:A1, A2
         }
