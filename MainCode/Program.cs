@@ -13,7 +13,7 @@ namespace MainCode
         {
             DIC dc = new DIC();
 
-            dc.Register<ISomeInterface, SomeClassRealization>(); //A1, R1:A1
+            dc.Register<IBaseInterface, SomeClassRealization>(); //A1, R1:A1
             dc.Register<MyAbstractClass,  UsefulClass> ();//A2, R2:A2
 
             Console.WriteLine(dc.Resolve<ISomeInterface>().IsDoingNothingMethod());
@@ -26,9 +26,9 @@ namespace MainCode
         }
     }
 
-    public interface ISomeInterface
+    public interface ISomeInterface: IBaseInterface
     {
-        bool IsDoingNothingMethod();
+       // bool IsDoingNothingMethod();
     }
 
     public class SomeClassRealization : ISomeInterface

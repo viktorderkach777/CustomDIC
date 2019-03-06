@@ -16,6 +16,11 @@ namespace Container
         public override string Message => "This type doesn't exist";
     }
 
+    public class NoParentException : Exception
+    {
+        public override string Message => "This type doesn't inherits or implements current abstraction";
+    }
+
 
     public class DIC
     {
@@ -40,14 +45,27 @@ namespace Container
             {
                 throw new InvalidAbstractionType();
             }
+           
+            var res = type1.IsAssignableFrom(type2);
+
+            if (!res)
+            {
+                throw new NoParentException();
+            }
 
             TypesStorage.Add(type1, type2);
         }
 
         public T1 Resolve<T1>()
         {
-            var myType = TypesStorage[typeof(T1)];
+            var type1 = typeof(T1);
 
+            if (!TypesStorage.ContainsKey(type1))
+            {
+                throw new RequestNotRegisteredTypeException();
+            }
+
+            var myType = TypesStorage[typeof(T1)];
             var instance = Activator.CreateInstance(myType);
             return (T1)instance;
         }
